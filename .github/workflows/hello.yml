@@ -27,3 +27,12 @@ jobs:
           echo "Commit SHA: ${{ github.sha }}"
           echo "Actor: ${{ github.actor }}"
           echo "Event: ${{ github.event_name }}"
+
+      - name: Checkout Repository and List Files
+        uses: actions/checkout@v4
+
+      - name: Show Git Branch and Latest Commit
+        run: |
+          ls -la
+          echo "Current branch: $(git branch --show-current || echo ${GITHUB_REF_NAME})"
+          echo "Latest commit: $(git log -1 --pretty=%s)"
